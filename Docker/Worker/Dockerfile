@@ -1,5 +1,4 @@
-# Use a slimmer base image
-FROM maven:3.9.9-eclipse-temurin-17-focal-slim
+FROM maven:3.9.9-eclipse-temurin-17-focal
 
 # Set build arguments and environment variables
 ARG MAVEN_USER
@@ -29,7 +28,8 @@ COPY . /app
 # Build project and prepare JMeter
 RUN mvn clean test-compile -s /root/.m2/settings.xml -Pjmeter-ext && \
     cp -r /app/target/jmeter-ext/*.jar ${JMETER_HOME}/lib/ext/ && \
-    cp /app/src/test/conf/rmi_keystore.jks ${JMETER_HOME}/bin/
+    cp /app/src/test/conf/rmi_keystore.jks ${JMETER_HOME}/bin/ && \
+    cp /app/src/test/resources/user.properties ${JMETER_HOME}/bin/
 
 # Set working directory for JMeter
 WORKDIR $JMETER_HOME/bin

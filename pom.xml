@@ -26,13 +26,7 @@
 		<jmeter.ext.dir>${project.build.directory}/jmeter-ext</jmeter.ext.dir>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>zimperium</id>
-			<url>https://zimperium.jfrog.io/zimperium</url>
-		</repository>
-	</repositories>
-
+	
 	<dependencies>	
 		<dependency>
 	        <groupId>commons-io</groupId>
@@ -96,9 +90,6 @@
 	            <jmeterArtifact>kg.apc:jmeter-plugins-graphs-basic:2.0</jmeterArtifact>
 	            <jmeterArtifact>kg.apc:jmeter-plugins-casutg:2.10</jmeterArtifact>
 	            <jmeterArtifact>com.google.protobuf:protobuf-java-util:3.19.6</jmeterArtifact>
-	            <jmeterArtifact>com.zimperium.zcloud.protobuf:zprotobuf:2.64.1</jmeterArtifact>
-	            <jmeterArtifact>com.datadoghq:jmeter-datadog-backend-listener:0.4.0</jmeterArtifact>
-	            <jmeterArtifact>com.zimperium.jmeter:zips_processor:1.0.3</jmeterArtifact>
 	            <jmeterArtifact>org.bouncycastle:bcprov-jdk15on:1.70</jmeterArtifact>
 	          </jmeterArtifacts>
 	        </configuration>

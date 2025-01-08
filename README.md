@@ -11,7 +11,7 @@ mvn jmeter:configure jmeter:gui -Pperformance
 If you want to preload a test, you can specify it on the command line:  
 
 ```
-mvn jmeter:configure jmeter:gui -DguiTestFile=src/test/jmeter/V5_DNS_Test.jmx -Pperformance
+mvn jmeter:configure jmeter:gui -DguiTestFile=src/test/jmeter/Test.jmx -Pperformance
 ```
 
 #### Run the tests

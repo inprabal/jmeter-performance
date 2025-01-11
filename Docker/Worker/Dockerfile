@@ -39,7 +39,10 @@ COPY . /app
 RUN mvn clean test-compile -s /app/settings.xml -Pjmeter-ext && \
     cp -r /app/target/jmeter-ext/*.jar ${JMETER_HOME}/lib/ext/ && \
     cp /app/src/test/conf/rmi_keystore.jks ${JMETER_HOME}/bin/ && \
-    cp /app/src/test/resources/user.properties ${JMETER_HOME}/bin/
+    cp /app/src/test/resources/user.properties ${JMETER_HOME}/bin/ && \
+    cp /app/Docker/Worker/entrypoint.sh $JMETER_HOME/bin/entrypoint.sh
+
+RUN chmod +x $JMETER_HOME/bin/entrypoint.sh
 
 # Set working directory for JMeter
 WORKDIR $JMETER_HOME/bin
@@ -48,4 +51,7 @@ WORKDIR $JMETER_HOME/bin
 EXPOSE 1099 50000
 
 # Entry point to start JMeter server
-ENTRYPOINT ["jmeter-server", "-Dserver.rmi.localport=50000", "-Dserver_port=1099"]
+#ENTRYPOINT ["jmeter-server", "-Dserver.rmi.localport=50000", "-Dserver_port=1099"]
+
+# Use the entrypoint script
+ENTRYPOINT ["./entrypoint.sh"]

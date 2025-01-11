@@ -63,13 +63,13 @@
 	          </execution>
 	        </executions>
 	        <configuration>
-	          <jMeterProcessJVMSettings>
-	            <xms>8192</xms> <!-- 8 GB for initial heap size -->
-	            <xmx>16384</xmx> <!-- 16 GB for maximum heap size -->
+	          <!-- jMeterProcessJVMSettings>
+	            <xms>8192</xms> 
+	            <xmx>16384</xmx> 
 	            <arguments>
-	              <argument>-XX:MaxMetaspaceSize=1024m</argument> <!-- 1 GB for Metaspace -->
+	              <argument>-XX:MaxMetaspaceSize=1024m</argument> 
 	            </arguments>
-	          </jMeterProcessJVMSettings>
+	          </jMeterProcessJVMSettings -->
 	          <jmeterArtifacts>
 	            <jmeterArtifact>org.apache.jmeter:ApacheJMeter:5.6.3</jmeterArtifact>
 	            <jmeterArtifact>org.apache.jmeter:ApacheJMeter_components:5.6.3</jmeterArtifact>
@@ -227,7 +227,7 @@
 	                            <stopServersAfterTests>false</stopServersAfterTests>
 	                        </remoteConfig>-->
 							<testFilesIncluded>
-								<jMeterTestFile>MTD PostProcessor_v3.jmx</jMeterTestFile>
+								<jMeterTestFile>Test.jmx</jMeterTestFile>
 								<!--<jMeterTestFile>APPRINT_v1.jmx</jMeterTestFile>-->
 							</testFilesIncluded>
 							<overrideRootLogLevel>DEBUG</overrideRootLogLevel>

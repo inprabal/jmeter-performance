@@ -207,6 +207,13 @@
 							<propertiesFilesDirectory>${project.basedir}/src/test/resources</propertiesFilesDirectory>
 							<exportedRmiHostname>192.168.1.11</exportedRmiHostname> <!-- Add your hostname here -->
             				<serverPort>1099</serverPort> <!-- Specify the RMI server port -->
+							<propertiesSystem>
+								<sun.rmi.loader.logLevel>verbose</sun.rmi.loader.logLevel>
+								<sun.rmi.transport.tcp.logLevel>verbose</sun.rmi.transport.tcp.logLevel>
+								<java.rmi.server.hostname>172.27.224.166</java.rmi.server.hostname>
+								<client.rmi.localport>60000</client.rmi.localport>
+								<sun.rmi.transport.tcp.connectionTimeout>60000</sun.rmi.transport.tcp.connectionTimeout>
+							</propertiesSystem> 
 							<propertiesUser>
 								<server.url>${server.url}</server.url>
 								<server.port>${server.port}</server.port>
@@ -214,18 +221,18 @@
 									${project.basedir}/src/test/jmeter/devices.csv</data.file>
 								<httpclient4.retrycount>1</httpclient4.retrycount>
 								<hc.parameters.file>${project.basedir}/src/test/resources/hc.parameters</hc.parameters.file>								
-            					<remote_hosts>192.168.1.7:1099</remote_hosts>
+            					<remote_hosts>29.146.57.102:1099</remote_hosts>
             					<server.rmi.ssl.disable>true</server.rmi.ssl.disable>
 								<server.rmi.ssl.keystore.file>rmi_keystore.jks</server.rmi.ssl.keystore.file>
 								<server.rmi.ssl.keystore.password>changeit</server.rmi.ssl.keystore.password>
 								<server.rmi.ssl.truststore.file>rmi_keystore.jks</server.rmi.ssl.truststore.file>
 								<server.rmi.ssl.truststore.password>changeit</server.rmi.ssl.truststore.password>
 							</propertiesUser>
-							<!--<remoteConfig> 
+							<remoteConfig> 
 	                            <startServersBeforeTests>true</startServersBeforeTests>
-	                            <serverList>192.168.1.7</serverList>
+	                            <serverList>29.146.57.102</serverList>
 	                            <stopServersAfterTests>false</stopServersAfterTests>
-	                        </remoteConfig>-->
+	                        </remoteConfig>
 							<testFilesIncluded>
 								<jMeterTestFile>Test.jmx</jMeterTestFile>
 								<!--<jMeterTestFile>APPRINT_v1.jmx</jMeterTestFile>-->

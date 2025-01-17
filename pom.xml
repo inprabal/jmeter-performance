@@ -24,8 +24,10 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<jmeter.ext.dir>${project.build.directory}/jmeter-ext</jmeter.ext.dir>
+		<jmeter.remote.hosts>40.118.237.100</jmeter.remote.hosts>
+		<jmeter.controller.host>40.118.237.100</jmeter.controller.host>
 	</properties>
-
+  
 	
 	<dependencies>	
 		<dependency>
@@ -63,13 +65,13 @@
 	          </execution>
 	        </executions>
 	        <configuration>
-	          <!-- jMeterProcessJVMSettings>
-	            <xms>8192</xms> 
-	            <xmx>16384</xmx> 
+	          <jMeterProcessJVMSettings>
+	            <xms>2148</xms> <!-- 2 GB for initial heap size -->
+	            <xmx>8192</xmx> <!-- 8 GB for maximum heap size -->
 	            <arguments>
-	              <argument>-XX:MaxMetaspaceSize=1024m</argument> 
+	              <argument>-XX:MaxMetaspaceSize=1024m</argument> <!-- 1 GB for Metaspace -->
 	            </arguments>
-	          </jMeterProcessJVMSettings -->
+	          </jMeterProcessJVMSettings>
 	          <jmeterArtifacts>
 	            <jmeterArtifact>org.apache.jmeter:ApacheJMeter:5.6.3</jmeterArtifact>
 	            <jmeterArtifact>org.apache.jmeter:ApacheJMeter_components:5.6.3</jmeterArtifact>
@@ -205,15 +207,20 @@
 						</executions>
 						<configuration>							
 							<propertiesFilesDirectory>${project.basedir}/src/test/resources</propertiesFilesDirectory>
-							<exportedRmiHostname>192.168.1.11</exportedRmiHostname> <!-- Add your hostname here -->
-            				<serverPort>1099</serverPort> <!-- Specify the RMI server port -->
-							<propertiesSystem>
+							<serverPort>1099</serverPort> <!-- Specify the RMI server port -->
+            				<propertiesSystem>
+								
 								<sun.rmi.loader.logLevel>verbose</sun.rmi.loader.logLevel>
 								<sun.rmi.transport.tcp.logLevel>verbose</sun.rmi.transport.tcp.logLevel>
-								<java.rmi.server.hostname>172.27.224.166</java.rmi.server.hostname>
+								<sun.rmi.log.debug>true</sun.rmi.log.debug>
+								<sun.rmi.server.exceptionTrace>true</sun.rmi.server.exceptionTrace>
+								<sun.rmi.dgc.logLevel>verbose</sun.rmi.dgc.logLevel>
+								<sun.rmi.transport.logLevel>verbose</sun.rmi.transport.logLevel>
+								
+								<java.rmi.server.hostname>${jmeter.controller.host}</java.rmi.server.hostname>
 								<client.rmi.localport>60000</client.rmi.localport>
 								<sun.rmi.transport.tcp.connectionTimeout>60000</sun.rmi.transport.tcp.connectionTimeout>
-							</propertiesSystem> 
+							</propertiesSystem>            				
 							<propertiesUser>
 								<server.url>${server.url}</server.url>
 								<server.port>${server.port}</server.port>
@@ -221,7 +228,7 @@
 									${project.basedir}/src/test/jmeter/devices.csv</data.file>
 								<httpclient4.retrycount>1</httpclient4.retrycount>
 								<hc.parameters.file>${project.basedir}/src/test/resources/hc.parameters</hc.parameters.file>								
-            					<remote_hosts>29.146.57.102:1099</remote_hosts>
+            					<remote_hosts>${jmeter.remote.hosts}</remote_hosts>
             					<server.rmi.ssl.disable>true</server.rmi.ssl.disable>
 								<server.rmi.ssl.keystore.file>rmi_keystore.jks</server.rmi.ssl.keystore.file>
 								<server.rmi.ssl.keystore.password>changeit</server.rmi.ssl.keystore.password>
@@ -230,7 +237,7 @@
 							</propertiesUser>
 							<remoteConfig> 
 	                            <startServersBeforeTests>true</startServersBeforeTests>
-	                            <serverList>29.146.57.102</serverList>
+	                            <serverList>${jmeter.remote.hosts}</serverList>
 	                            <stopServersAfterTests>false</stopServersAfterTests>
 	                        </remoteConfig>
 							<testFilesIncluded>

@@ -24,8 +24,8 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<jmeter.ext.dir>${project.build.directory}/jmeter-ext</jmeter.ext.dir>
-		<jmeter.remote.hosts>40.118.237.100</jmeter.remote.hosts>
-		<jmeter.controller.host>40.118.237.100</jmeter.controller.host>
+		<jmeter.remote.hosts>52.160.65.129</jmeter.remote.hosts>
+		<jmeter.controller.host>52.160.65.129</jmeter.controller.host>
 	</properties>
   
 	
@@ -218,7 +218,7 @@
 								<sun.rmi.transport.logLevel>verbose</sun.rmi.transport.logLevel>
 								
 								<java.rmi.server.hostname>${jmeter.controller.host}</java.rmi.server.hostname>
-								<client.rmi.localport>60000</client.rmi.localport>
+								<client.rmi.localport>59999</client.rmi.localport>
 								<sun.rmi.transport.tcp.connectionTimeout>60000</sun.rmi.transport.tcp.connectionTimeout>
 							</propertiesSystem>            				
 							<propertiesUser>
@@ -234,6 +234,7 @@
 								<server.rmi.ssl.keystore.password>changeit</server.rmi.ssl.keystore.password>
 								<server.rmi.ssl.truststore.file>rmi_keystore.jks</server.rmi.ssl.truststore.file>
 								<server.rmi.ssl.truststore.password>changeit</server.rmi.ssl.truststore.password>
+								<client.rmi.localport>59999</client.rmi.localport>
 							</propertiesUser>
 							<remoteConfig> 
 	                            <startServersBeforeTests>true</startServersBeforeTests>
